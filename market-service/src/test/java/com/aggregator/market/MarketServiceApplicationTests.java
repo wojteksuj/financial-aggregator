@@ -1,4 +1,4 @@
-package org.example.marketservice;
+package com.aggregator.market;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
