@@ -3,12 +3,12 @@ package com.aggregator.market.service;
 import com.aggregator.market.dto.RateResponseDto;
 import com.aggregator.market.entity.ExchangeRate;
 import com.aggregator.market.repository.ExchangeRateRepository;
+import com.aggregator.market.service.component.ExchangeRateClient;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
