@@ -12,7 +12,7 @@ public class RateScheduler {
         this.rateService = rateService;
     }
 
-    @Scheduled(fixedDelay = 6000)
+    @Scheduled(fixedDelay = 30_000)
     public void scheduleFetch(){
         rateService.fetchAndSave();
     }
