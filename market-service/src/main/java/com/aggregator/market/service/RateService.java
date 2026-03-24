@@ -3,6 +3,7 @@ package com.aggregator.market.service;
 import com.aggregator.market.dto.RateResponseDto;
 import com.aggregator.market.entity.ExchangeRate;
 import com.aggregator.market.exception.ExchangeRateApiException;
+import com.aggregator.market.exception.InvalidRequestException;
 import com.aggregator.market.repository.ExchangeRateRepository;
 import com.aggregator.market.service.component.ExchangeRateClient;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,8 @@ public class RateService {
     }
 
     public List<RateResponseDto> getRates(String currencyCode, LocalDate date) {
+        if (date.isAfter(LocalDate.now())) throw new InvalidRequestException("provided date is in the future");
+
         Instant startDate = date.atStartOfDay(ZoneOffset.UTC).toInstant();
         Instant endDate = date.atTime(23, 59, 59).atZone(ZoneOffset.UTC).toInstant();
 
