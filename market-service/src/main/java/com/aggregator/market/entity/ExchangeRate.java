@@ -28,4 +28,11 @@ public class ExchangeRate {
     private Instant fetchedAt;
 
     protected ExchangeRate() {}
+
+    public ExchangeRate(String currencyCode, String baseCurrency, BigDecimal rate, Instant fetchedAt) {
+        this.currencyCode = currencyCode;
+        this.baseCurrency = baseCurrency;
+        this.rate = rate;
+        this.fetchedAt = fetchedAt;
+    }
 }
