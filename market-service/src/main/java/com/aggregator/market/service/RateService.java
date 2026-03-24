@@ -37,7 +37,7 @@ public class RateService {
         Set<String> wantedCurrencies = Set.of("EUR", "USD", "GBP", "CHF", "CZK", "JPY");
 
         var rates = exchangeRateClient.fetchRates();
-        if(!rates.result().equals("success")) throw new ExchangeRateApiException("external api error: " + rates.result());
+        if(!"success".equals(rates.result())) throw new ExchangeRateApiException("external api error: " + rates.result());
 
         List<ExchangeRate> savedRates = rates.conversionRates().entrySet().stream()
                 .filter(entry -> wantedCurrencies.contains(entry.getKey()))
