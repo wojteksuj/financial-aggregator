@@ -1,4 +1,4 @@
-package com.aggregator.market.service;
+package com.aggregator.market.service.component;
 
 import com.aggregator.market.config.ExchangeRateApiConfig;
 import com.aggregator.market.dto.ExchangeRateApiResponse;
