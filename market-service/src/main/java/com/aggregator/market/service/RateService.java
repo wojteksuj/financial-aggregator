@@ -2,6 +2,7 @@ package com.aggregator.market.service;
 
 import com.aggregator.market.dto.RateResponseDto;
 import com.aggregator.market.entity.ExchangeRate;
+import com.aggregator.market.exception.ExchangeRateApiException;
 import com.aggregator.market.repository.ExchangeRateRepository;
 import com.aggregator.market.service.component.ExchangeRateClient;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,9 @@ public class RateService {
 
     public void fetchAndSave() {
         Set<String> wantedCurrencies = Set.of("EUR", "USD", "GBP", "CHF", "CZK", "JPY");
+
         var rates = exchangeRateClient.fetchRates();
+        if(!rates.result().equals("success")) throw new ExchangeRateApiException("external api error: " + rates.result());
 
         List<ExchangeRate> savedRates = rates.conversionRates().entrySet().stream()
                 .filter(entry -> wantedCurrencies.contains(entry.getKey()))
