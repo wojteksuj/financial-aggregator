@@ -16,11 +16,10 @@ public class ExchangeRateClient {
     public ExchangeRateApiResponse fetchRates(){
         RestClient restClient = RestClient.create();
 
-        ExchangeRateApiResponse response = restClient.get()
+        return restClient.get()
                 .uri(exchangeRateApiConfig.getBaseUrl() + "/" + exchangeRateApiConfig.getApiKey() + "/latest/" + exchangeRateApiConfig.getBaseCurrency())
                 .retrieve()
                 .body(ExchangeRateApiResponse.class);
-        return response;
     }
 
 
