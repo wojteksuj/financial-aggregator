@@ -13,7 +13,7 @@ public class ExchangeRateClient {
         this.exchangeRateApiConfig = exchangeRateApiConfig;
     }
 
-    public ExchangeRateApiResponse fetchRates(){
+    public ExchangeRateApiResponse fetchRates() {
         RestClient restClient = RestClient.create();
 
         return restClient.get()
@@ -21,9 +21,4 @@ public class ExchangeRateClient {
                 .retrieve()
                 .body(ExchangeRateApiResponse.class);
     }
-
-
-
-
-
 }
