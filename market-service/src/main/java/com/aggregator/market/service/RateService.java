@@ -2,6 +2,7 @@ package com.aggregator.market.service;
 
 import com.aggregator.market.dto.RateResponseDto;
 import com.aggregator.market.entity.ExchangeRate;
+import com.aggregator.market.entity.enumeration.Currency;
 import com.aggregator.market.exception.ExchangeRateApiException;
 import com.aggregator.market.exception.InvalidRequestException;
 import com.aggregator.market.repository.ExchangeRateRepository;
@@ -37,13 +38,11 @@ public class RateService {
     }
 
     public void fetchAndSave() {
-        Set<String> wantedCurrencies = Set.of("EUR", "USD", "GBP", "CHF", "CZK", "JPY");
-
         var rates = exchangeRateClient.fetchRates();
         if(!"success".equals(rates.result())) throw new ExchangeRateApiException("external api error: " + rates.result());
 
         List<ExchangeRate> savedRates = rates.conversionRates().entrySet().stream()
-                .filter(entry -> wantedCurrencies.contains(entry.getKey()))
+                .filter(entry -> Currency.getAllCodes().contains(entry.getKey()))
                 .map(entry -> new ExchangeRate(
                         entry.getKey(),
                         rates.baseCode(),
