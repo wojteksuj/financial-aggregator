@@ -1,5 +1,9 @@
 package com.aggregator.market.entity.enumeration;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 public enum Currency {
     EURO("EUR"),
     UNITED_STATES_DOLLAR("USD"),
@@ -16,5 +20,9 @@ public enum Currency {
 
     public String getCurrencyCode() {
         return currencyCode;
+    }
+
+    public static List<String> getAllCodes(){
+        return Arrays.stream(values()).map(Currency::getCurrencyCode).toList();
     }
 }
