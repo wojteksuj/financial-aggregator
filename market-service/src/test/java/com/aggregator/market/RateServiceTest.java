@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -32,7 +33,7 @@ public class RateServiceTest {
 
     @Test
     void testGetRates() {
-        when(exchangeRateRepository.findByCurrencyCodeAndFetchedAtBetween("EUR", any(Instant.class), any(Instant.class)))
+        when(exchangeRateRepository.findByCurrencyCodeAndFetchedAtBetween(eq("EUR"), any(Instant.class), any(Instant.class)))
                 .thenReturn(List.of(new ExchangeRate("EUR", "PLN",
                         new BigDecimal("4.25"), Instant.now())));
 
