@@ -50,5 +50,8 @@ public class RateServiceTest {
         assertThrows(InvalidRequestException.class, () -> rateService.getRates(currencyCode, date));
     }
 
+    @Test
+    void testFetchAndSave(){}
+
 
 }
