@@ -40,7 +40,7 @@ public class RateServiceTest {
         List<RateResponseDto> result = rateService.getRates("EUR", LocalDate.now());
 
         assertEquals(1, result.size());
-        assertEquals("EUR", result.get(0).baseCurrency());
+        assertEquals("EUR", result.get(0).currencyCode());
     }
 
     @Test
