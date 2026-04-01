@@ -34,11 +34,11 @@ public class RateServiceTest {
     void testGetRates() {
         when(exchangeRateRepository.findByCurrencyCodeAndFetchedAtBetween("EUR", any(Instant.class), any(Instant.class)))
                 .thenReturn(List.of(new ExchangeRate("EUR", "PLN",
-                        new BigDecimal("4.25"), any(Instant.class))));
+                        new BigDecimal("4.25"), Instant.now())));
 
         List<RateResponseDto> result = rateService.getRates("EUR", LocalDate.now());
 
-        assertEquals(1, result.size());
+         assertEquals(1, result.size());
         assertEquals("EUR", result.get(0).baseCurrency());
     }
 
@@ -48,4 +48,6 @@ public class RateServiceTest {
         LocalDate date = LocalDate.now().plusDays(1);
         assertThrows(InvalidRequestException.class, () -> rateService.getRates(currencyCode, date));
     }
+
+
 }
