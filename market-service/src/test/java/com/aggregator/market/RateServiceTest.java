@@ -1,5 +1,6 @@
 package com.aggregator.market;
 
+import com.aggregator.market.dto.ExchangeRateApiResponse;
 import com.aggregator.market.dto.RateResponseDto;
 import com.aggregator.market.entity.ExchangeRate;
 import com.aggregator.market.exception.InvalidRequestException;
@@ -13,14 +14,16 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @ExtendWith(MockitoExtension.class)
 public class RateServiceTest {
@@ -51,7 +54,12 @@ public class RateServiceTest {
     }
 
     @Test
-    void testFetchAndSave(){}
-
-
+    void testFetchAndSave() {
+        when(exchangeRateClient.fetchRates()).thenReturn(new ExchangeRateApiResponse(
+                "success",
+                "PLN",
+                new HashMap<>(Map.of("EUR", BigDecimal.valueOf(0.25)))));
+        rateService.fetchAndSave();
+        verify(exchangeRateRepository).saveAll(anyList());
+    }
 }
