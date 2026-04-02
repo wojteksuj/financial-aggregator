@@ -3,9 +3,11 @@ package com.aggregator.market.service;
 import com.aggregator.market.dto.ExchangeRateApiResponse;
 import com.aggregator.market.dto.RateResponseDto;
 import com.aggregator.market.entity.ExchangeRate;
+import com.aggregator.market.exception.ExchangeRateApiException;
 import com.aggregator.market.exception.InvalidRequestException;
 import com.aggregator.market.repository.ExchangeRateRepository;
 import com.aggregator.market.service.component.ExchangeRateClient;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -64,5 +66,10 @@ public class RateServiceTest {
 
     @Test
     void testFetchAndSaveExternalApiError(){
+        when(exchangeRateClient.fetchRates()).thenReturn(new ExchangeRateApiResponse(
+                "not_success",
+                "PLN",
+                new HashMap<>(Map.of("EUR", BigDecimal.valueOf(0.25)))));
+        Assertions.assertThrows(ExchangeRateApiException.class, () -> rateService.fetchAndSave());
     }
 }
