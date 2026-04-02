@@ -1,11 +1,10 @@
-package com.aggregator.market;
+package com.aggregator.market.service;
 
 import com.aggregator.market.dto.ExchangeRateApiResponse;
 import com.aggregator.market.dto.RateResponseDto;
 import com.aggregator.market.entity.ExchangeRate;
 import com.aggregator.market.exception.InvalidRequestException;
 import com.aggregator.market.repository.ExchangeRateRepository;
-import com.aggregator.market.service.RateService;
 import com.aggregator.market.service.component.ExchangeRateClient;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
