@@ -61,4 +61,8 @@ public class RateServiceTest {
         rateService.fetchAndSave();
         verify(exchangeRateRepository).saveAll(anyList());
     }
+
+    @Test
+    void testFetchAndSaveExternalApiError(){
+    }
 }
