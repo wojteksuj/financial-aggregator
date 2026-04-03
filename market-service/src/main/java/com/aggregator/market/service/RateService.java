@@ -38,7 +38,8 @@ public class RateService {
 
     public void fetchAndSave() {
         var rates = exchangeRateClient.fetchRates();
-        if(!"success".equals(rates.result())) throw new ExchangeRateApiException("external api error: " + rates.result());
+        if (!"success".equals(rates.result()))
+            throw new ExchangeRateApiException("external api error: " + rates.result());
 
         List<ExchangeRate> savedRates = rates.conversionRates().entrySet().stream()
                 .filter(entry -> Currency.getAllCodes().contains(entry.getKey()))
