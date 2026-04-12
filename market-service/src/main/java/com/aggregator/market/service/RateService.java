@@ -5,6 +5,7 @@ import com.aggregator.market.entity.ExchangeRate;
 import com.aggregator.market.entity.enumeration.Currency;
 import com.aggregator.market.exception.ExchangeRateApiException;
 import com.aggregator.market.exception.InvalidRequestException;
+import com.aggregator.market.exception.RatesNotFoundException;
 import com.aggregator.market.repository.ExchangeRateRepository;
 import com.aggregator.market.service.component.ExchangeRateClient;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,7 @@ public class RateService {
         var rates = exchangeRateClient.fetchRates();
         if (!"success".equals(rates.result()))
             throw new ExchangeRateApiException("external api error: " + rates.result());
+        if (rates.conversionRates().isEmpty()) throw new RatesNotFoundException("rates not found for provided base code");
 
         List<ExchangeRate> savedRates = rates.conversionRates().entrySet().stream()
                 .filter(entry -> Currency.getAllCodes().contains(entry.getKey()))
