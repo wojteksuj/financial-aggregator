@@ -29,5 +29,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(RatesNotFoundException.class)
     public ProblemDetail handleRatesNotFoundException(RatesNotFoundException ex){
+        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 }
