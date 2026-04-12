@@ -65,7 +65,7 @@ public class RateServiceTest {
     }
 
     @Test
-    void testFetchAndSaveExternalApiError(){
+    void testFetchAndSaveExternalApiError() {
         when(exchangeRateClient.fetchRates()).thenReturn(new ExchangeRateApiResponse(
                 "not_success",
                 "PLN",
