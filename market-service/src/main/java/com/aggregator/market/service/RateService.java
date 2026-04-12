@@ -41,7 +41,8 @@ public class RateService {
         var rates = exchangeRateClient.fetchRates();
         if (!"success".equals(rates.result()))
             throw new ExchangeRateApiException("external api error: " + rates.result());
-        if (rates.conversionRates().isEmpty()) throw new RatesNotFoundException("rates not found for provided base code");
+        if (rates.conversionRates().isEmpty())
+            throw new RatesNotFoundException("rates not found for provided base code");
 
         List<ExchangeRate> savedRates = rates.conversionRates().entrySet().stream()
                 .filter(entry -> Currency.getAllCodes().contains(entry.getKey()))
