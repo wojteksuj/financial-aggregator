@@ -64,6 +64,7 @@ public class RateServiceTest {
         verify(exchangeRateRepository).saveAll(anyList());
     }
 
+
     void testFetchAndSaveExternalApiError(){
         when(exchangeRateClient.fetchRates()).thenReturn(new ExchangeRateApiResponse(
                 "not_success",
