@@ -2,6 +2,7 @@ package com.aggregator.market.config;
 
 import com.aggregator.market.exception.ExchangeRateApiException;
 import com.aggregator.market.exception.InvalidRequestException;
+import com.aggregator.market.exception.RatesNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,5 +25,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidRequestException.class)
     public ProblemDetail handleInvalidRequestException(InvalidRequestException ex){
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    @ExceptionHandler(RatesNotFoundException.class)
+    public ProblemDetail handleRatesNotFoundException(RatesNotFoundException ex){
     }
 }
