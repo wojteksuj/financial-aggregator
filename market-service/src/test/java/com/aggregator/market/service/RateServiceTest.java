@@ -64,7 +64,6 @@ public class RateServiceTest {
         verify(exchangeRateRepository).saveAll(anyList());
     }
 
-    @Test
     void testFetchAndSaveExternalApiError(){
         when(exchangeRateClient.fetchRates()).thenReturn(new ExchangeRateApiResponse(
                 "not_success",
@@ -72,4 +71,5 @@ public class RateServiceTest {
                 new HashMap<>(Map.of("EUR", BigDecimal.valueOf(0.25)))));
         Assertions.assertThrows(ExchangeRateApiException.class, () -> rateService.fetchAndSave());
     }
+
 }
