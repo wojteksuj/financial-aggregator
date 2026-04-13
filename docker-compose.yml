@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  postgres:
+  postgres-market:
     image: postgres:16-alpine
     container_name: market-postgres
     environment:
@@ -10,6 +10,16 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
+
+  postgres-alert:
+    image: postgres:16-alpine
+    container_name: alert-postgres
+    environment:
+      POSTGRES_DB: alert_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
 
   rabbitmq:
     image: rabbitmq:3.12-management-alpine
