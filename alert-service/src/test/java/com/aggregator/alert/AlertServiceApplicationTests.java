@@ -1,4 +1,4 @@
-package com.example.alertservice;
+package com.aggregator.alert;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
