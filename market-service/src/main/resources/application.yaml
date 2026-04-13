@@ -15,3 +15,6 @@ app:
     api-key: ${EXCHANGERATE_API_KEY}
     base-url: https://v6.exchangerate-api.com/v6
     base-currency: PLN
+
+server:
+  port: 8080
