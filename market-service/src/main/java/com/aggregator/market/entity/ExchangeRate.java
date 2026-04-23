@@ -18,12 +18,16 @@ public class ExchangeRate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private Long id;
+
     @Column(nullable = false)
     private String currencyCode;
+
     @Column(nullable = false)
     private String baseCurrency;
+
     @Column(nullable = false)
     private BigDecimal rate;
+
     @Column(nullable = false)
     private Instant fetchedAt;
 
