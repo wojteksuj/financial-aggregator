@@ -1,7 +1,7 @@
 package com.aggregator.alert.controller;
 
-import com.aggregator.alert.dto.request.NewAlertDto;
-import com.aggregator.alert.dto.response.AlertResponseDto;
+import com.aggregator.alert.dto.request.CreateAlertRequest;
+import com.aggregator.alert.dto.response.CreateAlertResponse;
 import com.aggregator.alert.service.AlertService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +17,8 @@ public class AlertController {
     private final AlertService alertService;
 
     @PostMapping
-    public ResponseEntity<AlertResponseDto> createAlert(@Valid @RequestBody NewAlertDto newAlertDto){
-        AlertResponseDto response = alertService.createAlert(newAlertDto);
+    public ResponseEntity<CreateAlertResponse> createAlert(@Valid @RequestBody CreateAlertRequest createAlertRequest){
+        CreateAlertResponse response = alertService.createAlert(createAlertRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

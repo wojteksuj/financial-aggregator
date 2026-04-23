@@ -1,6 +1,6 @@
 package com.aggregator.alert.service;
-import com.aggregator.alert.dto.request.NewAlertDto;
-import com.aggregator.alert.dto.response.AlertResponseDto;
+import com.aggregator.alert.dto.request.CreateAlertRequest;
+import com.aggregator.alert.dto.response.CreateAlertResponse;
 import com.aggregator.alert.entity.Alert;
 import com.aggregator.alert.repository.AlertRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,15 +29,15 @@ public class AlertService {
         return triggeredAlerts;
     }
 
-    public AlertResponseDto createAlert(NewAlertDto newAlertDto) {
+    public CreateAlertResponse createAlert(CreateAlertRequest createAlertRequest) {
         Alert alert = new Alert(
-                newAlertDto.currencyCode(),
-                newAlertDto.thresholdRate(),
-                newAlertDto.higher()
+                createAlertRequest.currencyCode(),
+                createAlertRequest.thresholdRate(),
+                createAlertRequest.higher()
         );
         Alert savedAlert = alertRepository.save(alert);
         
-        return new AlertResponseDto(
+        return new CreateAlertResponse(
                 savedAlert.getCurrencyCode(),
                 savedAlert.getThresholdRate(),
                 savedAlert.isHigher(),

@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
-public record NewAlertDto(
+public record CreateAlertRequest(
         @NotBlank(message = "Currency code is required")
         String currencyCode,
         
