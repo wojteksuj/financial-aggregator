@@ -1,4 +1,6 @@
 package com.aggregator.alert.dto.request;
 
-public record newAlertDto {
+import java.math.BigDecimal;
+
+public record newAlertDto(String currencyCode, BigDecimal thresholdRate, boolean higher) {
 }
