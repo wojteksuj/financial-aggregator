@@ -1,0 +1,12 @@
+package com.aggregator.alert.dto;
+
+import java.math.BigDecimal;
+import java.time.Instant;
+
+public record TriggeredAlertEvent(
+        Long alertId,
+        String currencyCode,
+        BigDecimal thresholdRate,
+        boolean higher,
+        Instant triggeredAt
+) {}
