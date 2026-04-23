@@ -1,4 +1,6 @@
 package com.aggregator.alert.service;
+import com.aggregator.alert.dto.request.NewAlertDto;
+import com.aggregator.alert.dto.response.AlertResponseDto;
 import com.aggregator.alert.entity.Alert;
 import com.aggregator.alert.repository.AlertRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,23 @@ public class AlertService {
         }
 
         return triggeredAlerts;
+    }
+
+    public AlertResponseDto createAlert(NewAlertDto newAlertDto) {
+        Alert alert = new Alert(
+                newAlertDto.currencyCode(),
+                newAlertDto.thresholdRate(),
+                newAlertDto.higher()
+        );
+        Alert savedAlert = alertRepository.save(alert);
+        
+        return new AlertResponseDto(
+                savedAlert.getCurrencyCode(),
+                savedAlert.getThresholdRate(),
+                savedAlert.isHigher(),
+                savedAlert.isActive(),
+                savedAlert.getCreatedAt()
+        );
     }
 
     private boolean isThresholdCrossed(Alert alert, BigDecimal currentRate) {
