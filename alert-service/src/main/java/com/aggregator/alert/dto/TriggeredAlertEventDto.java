@@ -3,7 +3,7 @@ package com.aggregator.alert.dto;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-public record TriggeredAlertEvent(
+public record TriggeredAlertEventDto(
         Long alertId,
         String currencyCode,
         BigDecimal thresholdRate,
