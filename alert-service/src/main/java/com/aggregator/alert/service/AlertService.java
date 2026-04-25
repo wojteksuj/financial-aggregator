@@ -3,6 +3,7 @@ import com.aggregator.alert.dto.request.CreateAlertRequest;
 import com.aggregator.alert.dto.response.CreateAlertResponse;
 import com.aggregator.alert.dto.response.GetAlertResponse;
 import com.aggregator.alert.entity.Alert;
+import com.aggregator.alert.exception.CurrencyCodeNotFoundException;
 import com.aggregator.alert.repository.AlertRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,11 @@ public class AlertService {
     }
 
     public List<GetAlertResponse> getAlertsByCurrencyCode(String currencyCode) {
-        return alertRepository.findAlertByCurrencyCode(currencyCode).stream()
+        List<Alert> alerts = alertRepository.findAlertByCurrencyCode(currencyCode);
+        if (alerts.isEmpty()) {
+            throw new CurrencyCodeNotFoundException(currencyCode);
+        }
+        return alerts.stream()
                 .map(alert -> new GetAlertResponse(
                         alert.getId(),
                         alert.getCurrencyCode(),
@@ -39,8 +44,7 @@ public class AlertService {
                         alert.isHigher(),
                         alert.isActive(),
                         alert.getCreatedAt()
-                ))
-                .toList();
+                )).toList();
     }
 
     public CreateAlertResponse createAlert(CreateAlertRequest createAlertRequest) {
