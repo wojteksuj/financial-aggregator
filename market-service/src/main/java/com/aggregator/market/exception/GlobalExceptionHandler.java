@@ -1,8 +1,5 @@
-package com.aggregator.market.config;
+package com.aggregator.market.exception;
 
-import com.aggregator.market.exception.ExchangeRateApiException;
-import com.aggregator.market.exception.InvalidRequestException;
-import com.aggregator.market.exception.RatesNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
