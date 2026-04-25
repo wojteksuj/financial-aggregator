@@ -1,6 +1,7 @@
 package com.aggregator.alert.service;
 import com.aggregator.alert.dto.request.CreateAlertRequest;
 import com.aggregator.alert.dto.response.CreateAlertResponse;
+import com.aggregator.alert.dto.response.GetAlertResponse;
 import com.aggregator.alert.entity.Alert;
 import com.aggregator.alert.repository.AlertRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,19 @@ public class AlertService {
         }
 
         return triggeredAlerts;
+    }
+
+    public List<GetAlertResponse> getAlertsByCurrencyCode(String currencyCode) {
+        return alertRepository.findAlertByCurrencyCode(currencyCode).stream()
+                .map(alert -> new GetAlertResponse(
+                        alert.getId(),
+                        alert.getCurrencyCode(),
+                        alert.getThresholdRate(),
+                        alert.isHigher(),
+                        alert.isActive(),
+                        alert.getCreatedAt()
+                ))
+                .toList();
     }
 
     public CreateAlertResponse createAlert(CreateAlertRequest createAlertRequest) {
