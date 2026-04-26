@@ -1,7 +1,7 @@
 package com.aggregator.market.exception;
 
 public class RatesNotFoundException extends RuntimeException {
-    public RatesNotFoundException(String message) {
-        super(message);
+    public RatesNotFoundException() {
+        super("rates not found for provided base code");
     }
 }

@@ -33,7 +33,7 @@ public class GlobalExceptionHandlerTest {
 
     @Test
     void handleRatesNotFoundException_returnsNotFound() {
-        RatesNotFoundException ex = new RatesNotFoundException("rates not found for provided base code");
+        RatesNotFoundException ex = new RatesNotFoundException();
         ProblemDetail detail = handler.handleRatesNotFoundException(ex);
 
         assertEquals(HttpStatus.NOT_FOUND.value(), detail.getStatus());
