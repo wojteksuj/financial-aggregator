@@ -3,6 +3,7 @@ import com.aggregator.alert.dto.request.CreateAlertRequest;
 import com.aggregator.alert.dto.response.CreateAlertResponse;
 import com.aggregator.alert.dto.response.GetAlertResponse;
 import com.aggregator.alert.entity.Alert;
+import com.aggregator.alert.exception.AlertNotFoundException;
 import com.aggregator.alert.exception.CurrencyCodeNotFoundException;
 import com.aggregator.alert.repository.AlertRepository;
 import lombok.RequiredArgsConstructor;
@@ -62,6 +63,13 @@ public class AlertService {
                 savedAlert.isActive(),
                 savedAlert.getCreatedAt()
         );
+    }
+
+    public void deleteAlert(Long id) {
+        if (!alertRepository.existsById(id)) {
+            throw new AlertNotFoundException(Long.toString(id));
+        }
+        alertRepository.deleteById(id);
     }
 
     private boolean isThresholdCrossed(Alert alert, BigDecimal currentRate) {

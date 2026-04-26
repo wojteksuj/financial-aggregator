@@ -29,4 +29,10 @@ public class AlertController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAlert(@PathVariable Long id) {
+        alertService.deleteAlert(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
