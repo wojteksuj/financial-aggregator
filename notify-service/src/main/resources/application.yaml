@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: notify-service
+  datasource:
+    url: jdbc:postgresql://localhost:5434/notify_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 8082
