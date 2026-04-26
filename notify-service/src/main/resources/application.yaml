@@ -26,3 +26,8 @@ spring:
 
 server:
   port: 8082
+
+app:
+  notification:
+    recipient-email: exampl@mail.com
+    sender-email: notify-service@financial-aggregator.com
