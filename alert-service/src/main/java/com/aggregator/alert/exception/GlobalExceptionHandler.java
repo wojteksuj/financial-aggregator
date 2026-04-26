@@ -16,4 +16,9 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleCurrencyCodeNotFound(CurrencyCodeNotFoundException ex) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
     }
+
+    @ExceptionHandler(AlertNotFoundException.class)
+    public ProblemDetail handleAlertNotFound(AlertNotFoundException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
 }
