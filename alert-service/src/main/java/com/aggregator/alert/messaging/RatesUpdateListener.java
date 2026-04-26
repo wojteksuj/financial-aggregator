@@ -28,7 +28,7 @@ public class RatesUpdateListener {
             
             if (!triggeredAlerts.isEmpty()) {
                 for (Alert alert : triggeredAlerts) {
-                    alertPublisher.publishTriggeredAlert(alert);
+                    alertPublisher.publishTriggeredAlert(alert, currentRate);
                 }
             }
         }
