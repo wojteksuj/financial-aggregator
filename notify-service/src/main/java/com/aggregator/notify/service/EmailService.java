@@ -1,6 +1,6 @@
-package com.aggregator.notifyservice.service;
+package com.aggregator.notify.service;
 
-import com.aggregator.notifyservice.dto.TriggeredAlertEventDto;
+import com.aggregator.notify.dto.TriggeredAlertEventDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;

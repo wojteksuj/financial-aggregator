@@ -1,4 +1,4 @@
-package com.aggregator.notifyservice.entity;
+package com.aggregator.notify.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

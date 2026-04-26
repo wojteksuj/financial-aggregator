@@ -1,4 +1,4 @@
-package com.aggregator.notifyservice.dto;
+package com.aggregator.notify.dto;
 
 import java.math.BigDecimal;
 import java.time.Instant;

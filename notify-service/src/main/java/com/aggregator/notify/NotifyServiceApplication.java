@@ -1,4 +1,4 @@
-package com.aggregator.notifyservice;
+package com.aggregator.notify;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

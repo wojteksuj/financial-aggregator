@@ -1,4 +1,4 @@
-package com.aggregator.notifyservice;
+package com.aggregator.notify;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

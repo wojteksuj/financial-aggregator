@@ -1,4 +1,4 @@
-package com.aggregator.notifyservice.config;
+package com.aggregator.notify.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

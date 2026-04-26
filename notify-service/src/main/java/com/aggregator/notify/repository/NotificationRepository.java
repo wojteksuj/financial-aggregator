@@ -1,6 +1,6 @@
-package com.aggregator.notifyservice.repository;
+package com.aggregator.notify.repository;
 
-import com.aggregator.notifyservice.entity.Notification;
+import com.aggregator.notify.entity.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
