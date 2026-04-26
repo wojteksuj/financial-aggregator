@@ -6,23 +6,29 @@ import com.aggregator.market.entity.enumeration.Currency;
 import com.aggregator.market.exception.ExchangeRateApiException;
 import com.aggregator.market.exception.InvalidRequestException;
 import com.aggregator.market.exception.RatesNotFoundException;
+import com.aggregator.market.messaging.RatesPublisher;
 import com.aggregator.market.repository.ExchangeRateRepository;
 import com.aggregator.market.service.component.ExchangeRateClient;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class RateService {
     private final ExchangeRateRepository rateRepository;
     private final ExchangeRateClient exchangeRateClient;
+    private final RatesPublisher ratesPublisher;
 
-    public RateService(ExchangeRateRepository rateRepository, ExchangeRateClient exchangeRateClient) {
+    public RateService(ExchangeRateRepository rateRepository, ExchangeRateClient exchangeRateClient, RatesPublisher ratesPublisher) {
         this.rateRepository = rateRepository;
         this.exchangeRateClient = exchangeRateClient;
+        this.ratesPublisher = ratesPublisher;
     }
 
     public List<RateResponseDto> getRates(String currencyCode, LocalDate date) {
@@ -55,5 +61,9 @@ public class RateService {
                 .toList();
 
         rateRepository.saveAll(savedRates);
+
+        Map<String, BigDecimal> ratesMap = savedRates.stream()
+                .collect(Collectors.toMap(ExchangeRate::getCurrencyCode, ExchangeRate::getRate));
+        ratesPublisher.publishRatesUpdate(ratesMap);
     }
 }
