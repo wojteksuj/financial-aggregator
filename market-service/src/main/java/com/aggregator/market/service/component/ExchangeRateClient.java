@@ -1,7 +1,7 @@
 package com.aggregator.market.service.component;
 
 import com.aggregator.market.config.ExchangeRateApiConfig;
-import com.aggregator.market.dto.ExchangeRateApiResponse;
+import com.aggregator.market.dto.response.ExchangeRateApiResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 

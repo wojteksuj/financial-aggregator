@@ -1,6 +1,6 @@
 package com.aggregator.market.controller;
 
-import com.aggregator.market.dto.RateResponseDto;
+import com.aggregator.market.dto.response.RateResponseDto;
 import com.aggregator.market.exception.GlobalExceptionHandler;
 import com.aggregator.market.exception.InvalidRequestException;
 import com.aggregator.market.service.RateService;

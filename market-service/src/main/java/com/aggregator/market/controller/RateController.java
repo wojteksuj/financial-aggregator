@@ -1,7 +1,6 @@
 package com.aggregator.market.controller;
 
-import com.aggregator.market.dto.RateResponseDto;
-import com.aggregator.market.entity.ExchangeRate;
+import com.aggregator.market.dto.response.RateResponseDto;
 import com.aggregator.market.service.RateService;
 import org.springframework.web.bind.annotation.*;
 

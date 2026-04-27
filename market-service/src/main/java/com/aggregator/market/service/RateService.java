@@ -1,6 +1,6 @@
 package com.aggregator.market.service;
 
-import com.aggregator.market.dto.RateResponseDto;
+import com.aggregator.market.dto.response.RateResponseDto;
 import com.aggregator.market.entity.ExchangeRate;
 import com.aggregator.market.entity.enumeration.Currency;
 import com.aggregator.market.exception.ExchangeRateApiException;
