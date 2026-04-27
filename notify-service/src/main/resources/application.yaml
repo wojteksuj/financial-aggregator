@@ -15,19 +15,21 @@ spring:
     username: guest
     password: guest
   mail:
-    host: localhost
-    port: 1025
+    host: smtp.gmail.com
+    port: 587
+    username: wojciechsuj@gmail.com
+    password: ${GMAIL_APP_PASSWORD}
     properties:
       mail:
         smtp:
-          auth: false
+          auth: true
           starttls:
-            enable: false
+            enable: true
 
 server:
   port: 8082
 
 app:
   notification:
-    recipient-email: exampl@mail.com
-    sender-email: notify-service@financial-aggregator.com
+    recipient-email: wojciechsuj@gmail.com
+    sender-email: wojciechsuj@gmail.com
