@@ -9,6 +9,11 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(CurrencyCodeNotFoundException.class)
+    public ProblemDetail handleCurrencyCodeNotFoundException(CurrencyCodeNotFoundException ex){
+        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ProblemDetail handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex){
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
