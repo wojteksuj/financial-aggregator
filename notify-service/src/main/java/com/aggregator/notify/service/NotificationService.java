@@ -3,6 +3,7 @@ package com.aggregator.notify.service;
 import com.aggregator.notify.dto.TriggeredAlertEventDto;
 import com.aggregator.notify.dto.response.GetNotificationResponse;
 import com.aggregator.notify.entity.Notification;
+import com.aggregator.notify.exception.CurrencyCodeNotFoundException;
 import com.aggregator.notify.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,9 +33,15 @@ public class NotificationService {
     }
 
     public List<GetNotificationResponse> getNotifications(String currency) {
-        List<Notification> notifications = (currency != null)
-                ? notificationRepository.findByCurrencyCode(currency)
-                : notificationRepository.findAll();
+        List<Notification> notifications;
+        if (currency != null) {
+            notifications = notificationRepository.findByCurrencyCode(currency);
+            if (notifications.isEmpty()) {
+                throw new CurrencyCodeNotFoundException(currency);
+            }
+        } else {
+            notifications = notificationRepository.findAll();
+        }
 
         return notifications.stream()
                 .map(n -> new GetNotificationResponse(
