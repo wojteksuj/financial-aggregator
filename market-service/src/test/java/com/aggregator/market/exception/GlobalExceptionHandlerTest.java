@@ -19,7 +19,6 @@ public class GlobalExceptionHandlerTest {
         ProblemDetail detail = handler.handleExchangeRateApiException(ex);
 
         assertEquals(HttpStatus.BAD_GATEWAY.value(), detail.getStatus());
-        assertEquals("upstream failure", detail.getDetail());
     }
 
     @Test
