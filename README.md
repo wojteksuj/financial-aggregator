@@ -9,8 +9,10 @@ Its purpose is to automate monitoring of volatile exchange markets and provide t
 All wired together through asynchronous messaging between independently deployable services.
 
 
-## How it works
+## Architecture
 
+The system is built using an event-driven microservices architecture, where services communicate asynchronously via RabbitMQ.
+  It consists of three microservices: market-service, alert-service, and notify-service.
 ```
 ExchangeRate API (external)
         │ HTTP / RestClient
@@ -36,7 +38,7 @@ ExchangeRate API (external)
 
 **notify-service** consumes `alert.triggered`, sends real email notifications via Gmail SMTP, and persists the notification in its own database.
 
-Each service is **completely independent** - separate codebase, separate database, communicating only through RabbitMQ events.
+Each microservice is **completely independent** - separate codebase, separate database, communicating only through RabbitMQ events.
 
 #### Example Email Notification
 
