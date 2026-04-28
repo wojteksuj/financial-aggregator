@@ -38,20 +38,21 @@ ExchangeRate API (external)
 
 Each service is **completely independent** - separate codebase, separate database, communicating only through RabbitMQ events.
 
-### Example Email Notification
+#### Example Email Notification
 
-**Subject:** `[Alert] EUR is above threshold 0.20`
-
-**Body:**
-
-> **Alert triggered!**
+> [Alert] EUR is above threshold 0.20
 >
-> - Currency: **EUR**  
-> - Threshold: **0.20**  
-> - Current rate: **0.2357**  
-> - Difference: **0.0357**  
-> - Direction: **above threshold**  
-> - Triggered at: `2026-04-27T12:10:08.103480Z`
+> ---
+>
+> Alert triggered!
+>
+> - Currency: EUR  
+> - Threshold: 0.20  
+> - Current rate: 0.2357  
+> - Difference: 0.0357  
+> - Direction: above threshold
+> - Triggered at: 2026-04-27T12:10:08.103480Z
+
 
 
 ## Tech Stack
@@ -68,6 +69,7 @@ Each service is **completely independent** - separate codebase, separate databas
 | Build | Maven |
 | Boilerplate | Lombok |
 | Validation | Bean Validation |
+
 
 
 ## API Reference
@@ -117,13 +119,15 @@ financial-aggregator/
 └── docker-compose.yml
 ```
 
+
 ## Tests
 
 Each service includes unit and controller tests to ensure correctness of business logic and API behavior.  
 Mockito is used for mocking dependencies, and Spring WebMVC Test is used for lightweight controller testing.
 
+
 ## AI
 
 The core application code and architecture were designed and implemented by me.  
-An AI agent (Sonnet 4.5) was used as a supporting tool for learning, discussing design decisions, refining code, and generating unit tests.
+An AI agent (Claude Sonnet 4.6) was used as a supporting tool for learning, discussing design decisions, refining code, and generating unit tests.
 
