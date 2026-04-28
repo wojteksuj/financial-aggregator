@@ -47,7 +47,8 @@ Each service is **completely independent** - separate codebase, separate databas
 | Framework | Spring Boot 4 |
 | Messaging | RabbitMQ 3.12 |
 | Database | PostgreSQL 16 (one per service) |
-| Email (local) | MailHog |
+| Email (local development) | MailHog |
+| Email (production) | Gmail SMTP |
 | Infrastructure | Docker Compose |
 | Build | Maven |
 | Boilerplate | Lombok |
@@ -100,4 +101,14 @@ financial-aggregator/
 ├── notify-service/     # email notifications
 └── docker-compose.yml
 ```
+
+## Tests
+
+Each service includes unit and controller tests to ensure correctness of business logic and API behavior.  
+Mockito is used for mocking dependencies, and Spring WebMVC Test is used for lightweight controller testing.
+
+## AI
+
+The core application code and architecture were designed and implemented by me.  
+An AI agent (Sonnet 4.5) was used as a supporting tool for learning, discussing design decisions, refining code, and generating unit tests.
 
