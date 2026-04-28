@@ -40,7 +40,7 @@ Each service is **completely independent** - separate codebase, separate databas
 
 #### Example Email Notification
 
-> [Alert] EUR is above threshold 0.20
+> **Email subject:** `[Alert] EUR is above threshold 0.20`
 >
 > ---
 >
