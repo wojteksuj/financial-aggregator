@@ -38,6 +38,21 @@ ExchangeRate API (external)
 
 Each service is **completely independent** - separate codebase, separate database, communicating only through RabbitMQ events.
 
+### Example Email Notification
+
+**Subject:** `[Alert] EUR is above threshold 0.20`
+
+**Body:**
+
+> **Alert triggered!**
+>
+> - Currency: **EUR**  
+> - Threshold: **0.20**  
+> - Current rate: **0.2357**  
+> - Difference: **0.0357**  
+> - Direction: **above threshold**  
+> - Triggered at: `2026-04-27T12:10:08.103480Z`
+
 
 ## Tech Stack
 
