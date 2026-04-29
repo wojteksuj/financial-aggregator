@@ -13,24 +13,9 @@ All wired together through asynchronous messaging between independently deployab
 
 The system is built using an event-driven microservices architecture, where services communicate asynchronously via RabbitMQ.
   It consists of three microservices: market-service, alert-service, and notify-service.
-```
-ExchangeRate API (external)
-        │ HTTP / RestClient
-        ▼
-┌─────────────────────┐
-│   market-service    │  :8080  - fetches & stores exchange rates
-└─────────────────────┘
-        │ RabbitMQ  →  rates.updated
-        ▼
-┌─────────────────────┐
-│   alert-service     │  :8081  - evaluates user-defined rate alerts
-└─────────────────────┘
-        │ RabbitMQ  →  alert.triggered
-        ▼
-┌─────────────────────┐
-│   notify-service    │  :8082  - sends email notifications
-└─────────────────────┘
-```
+
+<img width="1502" height="939" alt="fa-diagram" src="https://github.com/user-attachments/assets/36ae8dc0-5626-4dbf-8b68-851b45bc7e58" />
+<br>
 
 **market-service** polls the [ExchangeRate API](https://www.exchangerate-api.com/) every 12 hours, persists the rates, and publishes a `rates.updated` event to RabbitMQ.
 
