@@ -56,6 +56,7 @@ Each microservice is **completely independent** - separate codebase, separate da
 | Build | Maven |
 | Boilerplate | Lombok |
 | Validation | Bean Validation |
+| Tests | JUnit, Mockito |
 
 
 
