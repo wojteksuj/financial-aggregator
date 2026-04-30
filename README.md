@@ -68,6 +68,7 @@ Each microservice is **completely independent** - separate codebase, separate da
 |---|---|---|
 | `GET` | `/api/v1/rates/{currency}?date=YYYY-MM-DD` | Get stored rates for a currency on a given date |
 
+Based currency: `PLN`
 Tracked currencies: `EUR`, `USD`, `GBP`, `CHF`, `CZK`, `JPY`
 
 ### alert-service - `:8081`
@@ -82,7 +83,7 @@ Tracked currencies: `EUR`, `USD`, `GBP`, `CHF`, `CZK`, `JPY`
 ```json
 {
   "currencyCode": "EUR",
-  "thresholdRate": 4.30,
+  "thresholdRate": 0.25,
   "higher": true
 }
 ```
